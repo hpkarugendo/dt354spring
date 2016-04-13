@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+ 
+    <title>Rosters</title>
+ 
+    <!--/*/ <th:block th:include="headers :: head"></th:block> /*/-->
+</head>
+<body>
+ 
+<div class="container">
+    <!--/*/ <th:block th:include="menus :: menu-manager"></th:block> /*/-->
+    <h2>Roster List</h2>
+    <table class="table table-hover table-bordered">
+            <tr>
+                <th><a th:href="@{/rosters}">ID</a></th>
+                <th>DATE</th>
+                <th>DEPARTMENT</th>
+                <th>File</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="r : ${rosters}">
+                <td th:text="${r.id}">Id</td>
+                <td th:text="${r.rosterDate}">Date</td>
+                <td th:text="${r.dept.name}">Department</td>
+                <td><a th:href="@{|/download?fileName=${r.fileName}|}">Download <span class="glyphicon glyphicon-download-alt"></span></a></td>
+                <td><a th:href="${'/roster/delete/' + r.id}">Delete</a></td>
+            </tr>
+        </table>
+        <a th:href="@{/roster}" class="btn btn-default">Add New</a>
+</div>
+</body>
+</html>

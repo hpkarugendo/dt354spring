@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+ 
+    <title>Home</title>
+ 
+    <!--/*/ <th:block th:include="headers :: head"></th:block> /*/-->
+</head>
+<body>
+ 
+	<div class="container">
+    <!--/*/ <th:block th:include="menus :: menu-manager"></th:block> /*/-->
+    	<div class="row">
+    		<div class="col-md-3 side-div">
+    				<div class="panel panel-info panel-ava">
+    					<div class="panel-heading">Profile</div>
+    					<div class="panel-body panel-3">
+    						<div class="avatar" th:switch="${emp.gender}">
+  								<div th:case="'MALE'">
+  									<img th:src="@{images/avatars/male.png}" alt="avatar image" />
+  								</div>
+  								<div th:case="'FEMALE'">
+  									<img th:src="@{images/avatars/female.png}" alt="avatar image" />
+  								</div>
+							</div>
+    						<table class="table">
+    							<tbody>
+    								<tr>
+    									<th>Name: </th>
+    									<td th:text="${emp.name}">Name</td>
+    								</tr>
+    								<tr>
+    									<th>Department: </th>
+    									<td th:text="${emp.dept.name}">Department</td>
+    								</tr>
+    								<tr>
+    									<th>Email: </th>
+    									<td th:text="${emp.email}">Email</td>
+    								</tr>
+    								<tr>
+    									<th>Phone: </th>
+    									<td th:text="${emp.phone}">Phone</td>
+    								</tr>
+    							</tbody>
+    						</table>
+    					</div>
+    				</div>
+    		</div>
+    		<div class="col-md-9 main-div">
+    			<div class="row">
+    				<div class="col-md-12">
+    					<div class="panel panel-info">
+    						<div class="panel-heading">Report - This Months Top Selling Items</div>
+    						<div class="panel-body panel-12">
+    							
+    						</div>
+    					</div>
+    				</div>
+    			</div>
+    			<div class="row">
+    				<div class="col-md-6">
+    					<div class="panel panel-info">
+    						<div class="panel-heading">Sales</div>
+    						<div class="panel-body panel-6">
+    						
+    						</div>
+    					</div>
+    				</div>
+    				<div class="col-md-6">
+    					<div class="panel panel-info">
+    						<div class="panel-heading">Items</div>
+    						<div class="panel-body panel-6">
+    						
+    						</div>
+    					</div>
+    				</div>
+    			</div>
+    			<div class="row">
+    				<div class="col-md-6">
+    					<div class="panel panel-info">
+    						<div class="panel-heading">Requests</div>
+    						<div class="panel-body panel-6">
+    						
+    						</div>
+    					</div>
+    				</div>
+    				<div class="col-md-6">
+    					<div class="panel panel-info">
+    						<div class="panel-heading">Enotes</div>
+    						<div class="panel-body panel-6">
+    						
+    						</div>
+    					</div>
+    				</div>
+    			</div>
+    			<div class="row">
+    				<div class="col-md-6">
+    					<div class="panel panel-info">
+    						<div class="panel-heading">Rosters</div>
+    						<div class="panel-body panel-6">
+    						
+    						</div>
+    					</div>
+    				</div>
+    				<div class="col-md-6">
+    					<div class="panel panel-info">
+    						<div class="panel-heading">Employees</div>
+    						<div class="panel-body panel-6">
+    						
+    						</div>
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    
+	</div>
+</body>
+</html>

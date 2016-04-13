@@ -1,0 +1,45 @@
+#welcome-title {
+	color: green;
+}
+
+.index-p {
+	display: block;
+	width: 70%;
+	margin: auto;
+}
+
+.login-form {
+	display: block;
+	padding-top: 40px;
+	width: 65%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.control-label {
+	font-size: 1.4em;
+}
+
+.panel-12 {
+	height: 400px;
+}
+
+.panel-6 {
+	height: 200px;
+}
+
+img {
+	display: block;
+	width: 80%;
+	height: auto;
+	margin: auto;
+}
+
+.navbar {
+	padding-left: 10%;
+	padding-right: 5%;
+}
+
+.container {
+	margin-top: 80px;
+}

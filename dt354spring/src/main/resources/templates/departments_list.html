@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+ 
+    <title>Departments</title>
+ 
+    <!--/*/ <th:block th:include="headers :: head"></th:block> /*/-->
+</head>
+<body>
+ 
+<div class="container">
+    <!--/*/ <th:block th:include="menus :: menu-manager"></th:block> /*/-->
+    <h2>Department List</h2>
+    <table class="table table-hover table-bordered">
+            <tr>
+                <th><a th:href="@{/departments}">ID</a></th>
+                <th><a th:href="@{/departments-by-name}">NAME</a></th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="dept : ${depts}">
+                <td th:text="${dept.id}">Id</td>
+                <td th:text="${dept.name}">Name</td>
+                <td><a th:href="${'/department/' + dept.id}">View</a></td>
+                <td><a th:href="${'/department/edit/' + dept.id}">Edit</a></td>
+                <td><a th:href="${'/department/delete/' + dept.id}">Delete</a></td>
+            </tr>
+        </table>
+        <a th:href="@{/department}" class="btn btn-default">Add New</a>
+</div>
+</body>
+</html>

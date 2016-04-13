@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+ 
+    <title>Welcome</title>
+ 
+    <!--/*/ <th:block th:include="headers :: head"></th:block> /*/-->
+</head>
+<body>
+ 
+<div class="container">
+    <div class="jumbotron index-p">
+            <div class="row text-center">
+                <div>
+                	<h1 id="welcome-title">Welcome to DT354 Bistro</h1>
+                    <h3>Please login below to continue!</h3>
+                </div>
+            </div>
+            <div class="row text-center">
+                <h4>@Patrick H Karugendo 2016-03-28</h4>
+            </div>
+   	</div>
+   	<div>
+   		<form class="form-horizontal login-form" th:object="${user}" th:action="@{/login}" method="get">
+            <input type="hidden" th:field="*{id}"/>
+                <div class="form-group">
+                    <label class="control-label">Username:</label>
+                    <input type="email" th:field="*{email}" required="required" class="form-control form-control-lg"
+                    		placeholder="you@email.ie" />
+                    <small class="text-muted">
+ 						 Enter your company email please.
+					</small>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Password:</label>
+                    <input type="password" th:field="*{password}" required="required" class="form-control form-control-lg" />
+                    <small class="text-muted">
+ 						 Enter your >5 character password
+					</small>
+                </div>
+                <div class="form-group">
+                	<button type="submit" class="btn btn-success">Login</button>
+                </div>
+            </form>
+   	</div>
+</div>
+</body>
+</html>

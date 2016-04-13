@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+ 
+    <title>Items</title>
+ 
+    <!--/*/ <th:block th:include="headers :: head"></th:block> /*/-->
+</head>
+<body>
+ 
+<div class="container">
+    <!--/*/ <th:block th:include="menus :: menu-manager"></th:block> /*/-->
+    <h2>Item List</h2>
+    <table class="table table-hover table-bordered">
+            <tr>
+                <th><a th:href="@{/items}">ID</a></th>
+                <th><a th:href="@{/items-by-name}">NAME</a></th>
+                <th>QUANTITY</th>
+                <th>PRICE</th>
+                <th>CATEGORY</th>
+                <th>TYPE</th>
+                <th>SUB-TYPE</th>
+                <th>SPICY?</th>
+                <th>VEGETARIAN?</th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="item : ${items}">
+                <td th:text="${item.id}">Id</td>
+                <td th:text="${item.name}">Name</td>
+                <td th:text="${item.quantity}">Quantity</td>
+                <td th:text="${item.price}">Price</td>
+                <td th:text="${item.itemCat}">Category</td>
+                <td th:text="${item.itemType}">Type</td>
+                <td th:text="${item.itemSubType}">Sub-Type</td>
+                <td th:text="${item.foodSpicy}">Spicy?</td>
+                <td th:text="${item.foodVeg}">Vegetarian?</td>
+                <td><a th:href="${'/item/' + item.id}">View</a></td>
+                <td><a th:href="${'/item/edit/' + item.id}">Edit</a></td>
+                <td><a th:href="${'/item/delete/' + item.id}">Delete</a></td>
+            </tr>
+        </table>
+        <a th:href="@{/item}" class="btn btn-default">Add New</a>
+</div>
+</body>
+</html>

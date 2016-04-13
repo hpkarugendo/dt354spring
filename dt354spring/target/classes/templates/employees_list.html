@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+ 
+    <title>Employees</title>
+ 
+    <!--/*/ <th:block th:include="headers :: head"></th:block> /*/-->
+</head>
+<body>
+ 
+<div class="container">
+    <!--/*/ <th:block th:include="menus :: menu-manager"></th:block> /*/-->
+    <h2>Employee List</h2>
+    <table class="table table-hover table-bordered">
+            <tr>
+                <th><a th:href="@{/employees}">ID</a></th>
+                <th><a th:href="@{/employees-by-code}">CODE</a></th>
+                <th>NAME</th>
+                <th>EMAIL</th>
+                <th>PHONE</th>
+                <th>GENDER</th>
+                <th><a th:href="@{/employees-by-dept}">DEPARTMENT</a></th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="emp : ${emps}">
+                <td th:text="${emp.id}">Id</td>
+                <td th:text="${emp.code}">Code</td>
+                <td th:text="${emp.name}">Name</td>
+                <td th:text="${emp.email}">Email</td>
+                <td th:text="${emp.phone}">Phone</td>
+                <td th:text="${emp.gender}">Gender</td>
+                <td th:text="${emp.dept.name}">Department</td>
+                <td><a th:href="${'/employee/' + emp.id}">View</a></td>
+                <td><a th:href="${'/employee/edit/' + emp.id}">Edit</a></td>
+                <td><a th:href="${'/employee/delete/' + emp.id}">Delete</a></td>
+            </tr>
+        </table>
+        <a th:href="@{/employee}" class="btn btn-default">Add New</a>
+</div>
+</body>
+</html>
