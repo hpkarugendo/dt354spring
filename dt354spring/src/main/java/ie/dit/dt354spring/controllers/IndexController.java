@@ -52,12 +52,12 @@ public class IndexController {
 			    
 			    if(currentEmp.getDept().getName().equalsIgnoreCase("Management")){
 				model.addAttribute("emp", currentEmp);
-				model.addAttribute("qotd", qRepo.findTopByOrderByIdDesc());
+				model.addAttribute("qotd", qRepo.findFirstByOrderByIdDesc());
 				model.addAttribute("newQuote", new Quote());
 				return "home_manager";
 			    } else {
 				model.addAttribute("emp", currentEmp);
-				model.addAttribute("qotd", qRepo.findTopByOrderByIdDesc());
+				model.addAttribute("qotd", qRepo.findFirstByOrderByIdDesc());
 				return "home_employee";
 			    }
 			} else {

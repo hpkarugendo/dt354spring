@@ -183,12 +183,12 @@ public class DefaultEntityLoader implements ApplicationListener<ContextRefreshed
 		 * Quotes
 		 */
 		Quote q = new Quote();
-		q.setQuote("Son of Krypton vs The Bat from Gotham. Fight Night!");
-		q.setQuoter("Lex Luthor Jr (Batman v Superman)");
+		q.setDayQuote("Son of Krypton vs The Bat from Gotham. Fight Night!");
+		q.setDayQuoter("Lex Luthor Jr (Batman v Superman)");
 		qRepo.save(q);
 		q = new Quote();
-		q.setQuote("Tell me. Do you bleed?...You will!");
-		q.setQuoter("Batman (Batman v Superman)");
+		q.setDayQuote("Tell me. Do you bleed?...You will!");
+		q.setDayQuoter("Batman (Batman v Superman)");
 		qRepo.save(q);
 	}
 
