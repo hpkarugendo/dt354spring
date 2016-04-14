@@ -1,36 +1,31 @@
 package ie.dit.dt354spring.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
-public class OrderItem {
+public class OrderItem implements Serializable{
     @Id
-    @GeneratedValue
-    private int id;
+    private long id;
     @OneToOne
     private Item item;
     private boolean served;
-    private String note;
+    private String littleNote;
     
     public OrderItem() {
 	super();
     }
 
-    public OrderItem(Item item) {
-	super();
-	this.item = item;
-	this.served = false;
-	this.note = "";
-    }
-
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -50,14 +45,12 @@ public class OrderItem {
         this.served = served;
     }
 
-    public String getNote() {
-        return note;
+    public String getLittleNote() {
+        return littleNote;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setLittleNote(String littleNote) {
+        this.littleNote = littleNote;
     }
     
-    
-
 }

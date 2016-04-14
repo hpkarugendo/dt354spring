@@ -1,69 +1,80 @@
 package ie.dit.dt354spring.entities;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Req {
 	@Id
 	@GeneratedValue
 	private int id;
-	private Date fromDate, toDate;
+	private String fromDate, toDate;
 	private String reason, status;
+	@ManyToOne
+	private Employee employee;
 	
 	public Req() {
 		super();
 	}
 
-	public Req(Date fromDate, Date toDate, String reason) {
-		super();
-		this.fromDate = fromDate;
-		this.toDate = toDate;
-		this.reason = reason;
-		this.status = "PENDING";
+	public Req(String fromDate, String toDate, String reason, String status, Employee employee) {
+	    super();
+	    this.fromDate = fromDate;
+	    this.toDate = toDate;
+	    this.reason = reason;
+	    this.status = status;
+	    this.employee = employee;
 	}
 
 	public int getId() {
-		return id;
+	    return id;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+	    this.id = id;
 	}
 
-	public Date getFromDate() {
-		return fromDate;
+	public String getFromDate() {
+	    return fromDate;
 	}
 
-	public void setFromDate(Date fromDate) {
-		this.fromDate = fromDate;
+	public void setFromDate(String fromDate) {
+	    this.fromDate = fromDate;
 	}
 
-	public Date getToDate() {
-		return toDate;
+	public String getToDate() {
+	    return toDate;
 	}
 
-	public void setToDate(Date toDate) {
-		this.toDate = toDate;
+	public void setToDate(String toDate) {
+	    this.toDate = toDate;
 	}
 
 	public String getReason() {
-		return reason;
+	    return reason;
 	}
 
 	public void setReason(String reason) {
-		this.reason = reason;
+	    this.reason = reason;
 	}
 
 	public String getStatus() {
-		return status;
+	    return status;
 	}
 
 	public void setStatus(String status) {
-		this.status = status;
+	    this.status = status;
 	}
 
+	public Employee getEmployee() {
+	    return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+	    this.employee = employee;
+	}
+	
+	
 }

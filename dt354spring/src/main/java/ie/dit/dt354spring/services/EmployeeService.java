@@ -19,6 +19,8 @@ public class EmployeeService {
     
     @RequestMapping(value="/rest/employees", method=RequestMethod.GET)
     public List<Employee> getEmps(){
+	Logger log = Logger.getLogger(EmployeeService.class);
+	log.info("REQUESTED EMPLOYEE LIST");
 	return eRepo.findAll();
     }
     

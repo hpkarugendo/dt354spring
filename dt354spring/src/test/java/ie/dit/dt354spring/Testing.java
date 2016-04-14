@@ -1,5 +1,6 @@
 package ie.dit.dt354spring;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.junit.Assert;
@@ -10,7 +11,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
+import ie.dit.dt354spring.entities.Department;
 import ie.dit.dt354spring.entities.Employee;
+import ie.dit.dt354spring.entities.Req;
 
 public class Testing extends Assert{
 	
@@ -45,6 +48,22 @@ public class Testing extends Assert{
 		 }
 		 
 		 System.out.println(em.getName());
+	}
+	
+	@Test
+	public void test_posting(){
+	    System.out.println("Done");
+	}
+	
+	@Test
+	public void test_getOne(){
+	    RestTemplate restTemplate = new RestTemplate();
+	    String code = "1001";
+	    String fooResourceUrl = "http://localhost:8080/rest/employees/" + code;
+	    
+	    Employee e = restTemplate.getForObject(fooResourceUrl, Employee.class);
+	    System.out.println(e);
+	    assertNotNull(e);
 	}
 
 }

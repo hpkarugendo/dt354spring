@@ -1,27 +1,25 @@
 package ie.dit.dt354spring.entities;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
-public class Employee {
+public class Employee{
 	@Id
 	@GeneratedValue
 	private int id;
+	@Column(unique=true)
 	private String code;
 	private String name;
+	@Column(unique=true)
 	private String email;
+	private String password;
 	private String phone, gender;
 	@ManyToOne
 	private Department dept;
-	@OneToMany
-	private List<Req> reqs;
 	private boolean loggedIn;
 	
 	public Employee() {
@@ -36,81 +34,79 @@ public class Employee {
 		this.phone = phone;
 		this.gender = gender;
 		this.dept = new Department();
-		this.reqs = new ArrayList<Req>();
 		this.loggedIn = false;
+		this.password = "pass";
 	}
 
 	public int getId() {
-		return id;
+	    return id;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+	    this.id = id;
 	}
 
 	public String getCode() {
-		return code;
+	    return code;
 	}
 
 	public void setCode(String code) {
-		this.code = code;
+	    this.code = code;
 	}
 
 	public String getName() {
-		return name;
+	    return name;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+	    this.name = name;
 	}
 
 	public String getEmail() {
-		return email;
+	    return email;
 	}
 
 	public void setEmail(String email) {
-		this.email = email;
+	    this.email = email;
+	}
+
+	public String getPassword() {
+	    return password;
+	}
+
+	public void setPassword(String password) {
+	    this.password = password;
 	}
 
 	public String getPhone() {
-		return phone;
+	    return phone;
 	}
 
 	public void setPhone(String phone) {
-		this.phone = phone;
+	    this.phone = phone;
 	}
 
 	public String getGender() {
-		return gender;
+	    return gender;
 	}
 
 	public void setGender(String gender) {
-		this.gender = gender;
+	    this.gender = gender;
 	}
 
 	public Department getDept() {
-		return dept;
+	    return dept;
 	}
 
 	public void setDept(Department dept) {
-		this.dept = dept;
-	}
-
-	public List<Req> getReqs() {
-		return reqs;
-	}
-
-	public void setReqs(List<Req> reqs) {
-		this.reqs = reqs;
+	    this.dept = dept;
 	}
 
 	public boolean isLoggedIn() {
-		return loggedIn;
+	    return loggedIn;
 	}
 
 	public void setLoggedIn(boolean loggedIn) {
-		this.loggedIn = loggedIn;
+	    this.loggedIn = loggedIn;
 	}
-	
-	
 }
