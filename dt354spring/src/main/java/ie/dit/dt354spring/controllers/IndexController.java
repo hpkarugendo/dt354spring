@@ -10,13 +10,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ie.dit.dt354spring.entities.Employee;
+import ie.dit.dt354spring.entities.Quote;
 import ie.dit.dt354spring.entities.User;
 import ie.dit.dt354spring.repositories.EmployeeRepository;
+import ie.dit.dt354spring.repositories.QuoteRepository;
 
 @Controller
 public class IndexController {
     @Autowired
     private EmployeeRepository eRepo;
+    @Autowired
+    private QuoteRepository qRepo;
     private Employee currentEmp;
 
 	@RequestMapping("/")
@@ -48,9 +52,12 @@ public class IndexController {
 			    
 			    if(currentEmp.getDept().getName().equalsIgnoreCase("Management")){
 				model.addAttribute("emp", currentEmp);
+				model.addAttribute("qotd", qRepo.findTopByOrderByIdDesc());
+				model.addAttribute("newQuote", new Quote());
 				return "home_manager";
 			    } else {
 				model.addAttribute("emp", currentEmp);
+				model.addAttribute("qotd", qRepo.findTopByOrderByIdDesc());
 				return "home_employee";
 			    }
 			} else {

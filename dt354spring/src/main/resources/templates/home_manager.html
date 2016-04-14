@@ -111,6 +111,24 @@
     					</div>
     				</div>
     			</div>
+    			<div class="row">
+    				<div class="col-md-12">
+    					<div class="panel panel-info">
+    						<div class="panel-heading">Quote of The day</div>
+    						<div class="panel-body panel-12-emp">
+    							<div class="row">
+    								<p th:inline="text" id="quote-quote">
+										"[[${qotd.quote}]]"
+									</p>
+    								<p th:text="${qotd.quoter}" id="quote-quoter">quoter</p>
+    							</div>
+    							<div class="row">
+    								<a th:href="@{/quote/add}" class="btn btn-info button-new">Add New</a>
+    							</div>
+    						</div>
+    					</div>
+    				</div>
+    			</div>
     		</div>
     	</div>
     

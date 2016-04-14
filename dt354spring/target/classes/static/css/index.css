@@ -43,3 +43,26 @@ img {
 .container {
 	margin-top: 80px;
 }
+
+.panel-12-emp {
+	height: 200px;
+}
+
+#quote-quote {
+	font-size: 3em;
+	font-weight: bold;
+	text-align: center;
+}
+
+#quote-quoter {
+	font-size: 1.7em;
+	font-style: italic;
+	text-align: right;
+	padding-right: 40px;
+}
+
+.button-new {
+	display: block;
+	margin-right: 80px;
+	float: right;
+}

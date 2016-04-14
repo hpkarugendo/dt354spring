@@ -9,9 +9,11 @@ import org.springframework.stereotype.Component;
 import ie.dit.dt354spring.entities.Department;
 import ie.dit.dt354spring.entities.Employee;
 import ie.dit.dt354spring.entities.Item;
+import ie.dit.dt354spring.entities.Quote;
 import ie.dit.dt354spring.repositories.DepartmentRepository;
 import ie.dit.dt354spring.repositories.EmployeeRepository;
 import ie.dit.dt354spring.repositories.ItemRepository;
+import ie.dit.dt354spring.repositories.QuoteRepository;
 
 @Component
 public class DefaultEntityLoader implements ApplicationListener<ContextRefreshedEvent>{
@@ -19,14 +21,16 @@ public class DefaultEntityLoader implements ApplicationListener<ContextRefreshed
 	private DepartmentRepository dRepo;
 	private EmployeeRepository eRepo;
 	private ItemRepository iRepo;
+	private QuoteRepository qRepo;
 	private Logger log = Logger.getLogger(DefaultEntityLoader.class);
 	
 	@Autowired
 	public void setRepo(DepartmentRepository deptRepo, EmployeeRepository empRepo,
-		ItemRepository itemRepo){
+		ItemRepository itemRepo, QuoteRepository quoteRepo){
 		this.dRepo = deptRepo;
 		this.eRepo = empRepo;
 		this.iRepo = itemRepo;
+		this.qRepo = quoteRepo;
 	}
 
 	@Override
@@ -175,6 +179,17 @@ public class DefaultEntityLoader implements ApplicationListener<ContextRefreshed
 		i = new Item("Espresso", 3.00, "DRINK", "OTHER", "NA", false, false);
 		iRepo.save(i);
 		
+		/*
+		 * Quotes
+		 */
+		Quote q = new Quote();
+		q.setQuote("Son of Krypton vs The Bat from Gotham. Fight Night!");
+		q.setQuoter("Lex Luthor Jr (Batman v Superman)");
+		qRepo.save(q);
+		q = new Quote();
+		q.setQuote("Tell me. Do you bleed?...You will!");
+		q.setQuoter("Batman (Batman v Superman)");
+		qRepo.save(q);
 	}
 
 }

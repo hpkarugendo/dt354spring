@@ -11,8 +11,4 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @WebAppConfiguration
 public class Dt354springApplicationTests {
 
-	@Test
-	public void contextLoads() {
-	}
-
 }

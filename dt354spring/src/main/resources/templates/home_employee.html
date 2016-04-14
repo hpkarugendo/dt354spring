@@ -49,62 +49,43 @@
     			<div class="row">
     				<div class="col-md-12">
     					<div class="panel panel-info">
-    						<div class="panel-heading">Sales Snapshot</div>
-    						<div class="panel-body panel-12">
-    					
+    						<div class="panel-heading">Quote of The day</div>
+    						<div class="panel-body panel-12-emp">
+    							<div>
+    								<p th:inline="text" id="quote-quote">
+										"[[${qotd.quote}]]"
+									</p>
+    								<p th:text="${qotd.quoter}" id="quote-quoter">quoter</p>
+    							</div>
     						</div>
     					</div>
     				</div>
     			</div>
     			<div class="row">
-    				<div class="col-md-6">
-    					<div class="panel panel-info">
-    						<div class="panel-heading">Sales</div>
-    						<div class="panel-body panel-6">
-    					
-    						</div>
-    					</div>
-    				</div>
-    				<div class="col-md-6">
-    					<div class="panel panel-info">
-    						<div class="panel-heading">Items</div>
-    						<div class="panel-body panel-6">
-    					
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="row">
-    				<div class="col-md-6">
-    					<div class="panel panel-info">
-    						<div class="panel-heading">Employees</div>
-    						<div class="panel-body panel-6">
-    					
-    						</div>
-    					</div>
-    				</div>
-    				<div class="col-md-6">
+    				<div class="col-md-12">
     					<div class="panel panel-info">
     						<div class="panel-heading">Rosters</div>
-    						<div class="panel-body panel-6">
+    						<div class="panel-body panel-12-emp">
     					
     						</div>
     					</div>
     				</div>
     			</div>
     			<div class="row">
-    				<div class="col-md-6">
+    				<div class="col-md-12">
     					<div class="panel panel-info">
-    						<div class="panel-heading">Requests</div>
-    						<div class="panel-body panel-6">
+    						<div class="panel-heading">Enotes</div>
+    						<div class="panel-body panel-12-emp">
     					
     						</div>
     					</div>
     				</div>
-    				<div class="col-md-6">
+    			</div>
+    			<div class="row">
+    				<div class="col-md-12">
     					<div class="panel panel-info">
-    						<div class="panel-heading">Enotes</div>
-    						<div class="panel-body panel-6">
+    						<div class="panel-heading">Requests</div>
+    						<div class="panel-body panel-12-emp">
     					
     						</div>
     					</div>

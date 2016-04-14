@@ -18,7 +18,7 @@ public class Testing extends Assert{
 	public void get_rest(){
 		RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-        ResponseEntity<List> emps = restTemplate.getForEntity("http://192.168.1.13:8080/rest/employees", List.class);
+        ResponseEntity<List> emps = restTemplate.getForEntity("http://localhost:8080/rest/employees", List.class);
         for(int i = 0; i < emps.getBody().size(); i++){
         	Object o = emps.getBody().get(i);
         	System.out.println(o.toString());
@@ -32,7 +32,7 @@ public class Testing extends Assert{
 	
 	@Test
 	public void new_test(){
-		final String url = "http://192.168.1.13:8080/rest/employees";
+		final String url = "http://localhost:8080/rest/employees";
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
         ParameterizedTypeReference<List<Employee>> typeRef = new ParameterizedTypeReference<List<Employee>>() {};
