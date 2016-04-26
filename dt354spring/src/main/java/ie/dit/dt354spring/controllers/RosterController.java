@@ -54,20 +54,29 @@ public class RosterController {
 	}
 	
 	@RequestMapping(value="roster", method=RequestMethod.POST)
-	public String createDepartment(@RequestParam("dept") int dept, @RequestParam("rosterFile") MultipartFile rosterFile){
+	public String createDepartment(@RequestParam("dept") int dept, 
+		@RequestParam("rosterFile") MultipartFile file,
+		@RequestParam("rosterDate") String rosterDate){
 		Roster r = new Roster();
-		Date d = new Date();
 		Department dt = dRepo.findOne(dept);
 		SimpleDateFormat f = new SimpleDateFormat("yyyyMMdd");
 		r.setDept(dt);
-		r.setRosterDate(f.format(d));
+		r.setRosterDate(rosterDate);
 		try {
-		    byte[] b = rosterFile.getBytes();
-		    r.setRosterFile(b);
+		    byte[] b = file.getBytes();
+		    String ext = "";
+		    if(file.getContentType().contains("pdf")){
+			ext = ".pdf";
+		    } else if(file.getContentType().contains("xls")){
+			ext = ".xls";
+		    } else if(file.getContentType().contains("xlsx")) {
+			ext = ".xlsx";
+		    }
 		    FileOutputStream fos = new FileOutputStream("src/main/resources/static/rosters/" + 
-		    	    r.getRosterDate() + r.getDept().getName() + ".pdf");
-		    	            fos.write(b);
-		    	            fos.close();
+		    	    r.getRosterDate() + r.getDept().getName() + ext);
+		    r.setFileName(r.getRosterDate() + r.getDept().getName() + ext);
+		    fos.write(b);
+		    fos.close();
 		} catch (FileNotFoundException e) {
 		    // TODO Auto-generated catch block
 		    e.printStackTrace();
@@ -75,10 +84,7 @@ public class RosterController {
 		    // TODO Auto-generated catch block
 		    e.printStackTrace();
 		}
-		String fileName = r.getRosterDate() + r.getDept().getName() + ".pdf";
-		r.setFileName(fileName);
 		System.out.println(r.getDept().getName());
-		
 		rRepo.save(r);
 		return "redirect:/rosters";
 	}
