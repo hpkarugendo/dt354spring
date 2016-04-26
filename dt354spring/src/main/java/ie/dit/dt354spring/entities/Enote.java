@@ -2,6 +2,7 @@ package ie.dit.dt354spring.entities;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,7 +15,9 @@ public class Enote {
     @GeneratedValue
     private int id;
     private Date dateSent;
-    private String subject, body;
+    private String subject;
+    @Column(columnDefinition="TEXT")
+    private String noteBody;
     @OneToOne
     private Employee noteFrom;
     @OneToOne
@@ -24,13 +27,14 @@ public class Enote {
     public Enote() {
 	super();
 	this.dateSent = new Date();
+	this.seen = false;
     }
 
-    public Enote(String subject, String body, Employee noteFrom, Employee noteTo) {
+    public Enote(String subject, String noteBody, Employee noteFrom, Employee noteTo) {
 	super();
 	this.dateSent = new Date();
 	this.subject = subject;
-	this.body = body;
+	this.noteBody = noteBody;
 	this.noteFrom = noteFrom;
 	this.noteTo = noteTo;
 	this.seen = false;
@@ -60,14 +64,6 @@ public class Enote {
         this.subject = subject;
     }
 
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
-
     public Employee getNoteFrom() {
         return noteFrom;
     }
@@ -91,7 +87,12 @@ public class Enote {
     public void setSeen(boolean seen) {
         this.seen = seen;
     }
-    
-    
 
+	public String getNoteBody() {
+		return noteBody;
+	}
+
+	public void setNoteBody(String noteBody) {
+		this.noteBody = noteBody;
+	}
 }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+ 
+    <title>Enotes</title>
+ 
+    <!--/*/ <th:block th:include="headers :: head"></th:block> /*/-->
+</head>
+<body>
+ <div th:switch="${emp.dept.name}">
+    	<div th:case="MANAGEMENT"><!--/*/ <th:block th:include="menus :: menu-manager"></th:block> /*/--></div>
+    	<div th:case="*"><!--/*/ <th:block th:include="menus :: menu-employee"></th:block> /*/--></div>
+ </div>
+<div class="container">
+    <h2>Enote List</h2>
+    <table class="table table-hover table-bordered">
+            <tr>
+                <th>DATE</th>
+                <th>SUBJECT</th>
+                <th>FROM</th>
+                <th>View</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="n : ${enotes}">
+                <td th:text="${n.dateSent}">Date</td>
+                <td th:text="${n.subject}">Subject</td>
+                <td th:text="${n.noteFrom.name}">Name</td>
+                <td><a th:href="${'/enote/' + n.id}">View</a></td>
+                <td><a th:href="${'/enote/delete/' + n.id}">Delete</a></td>
+            </tr>
+        </table>
+        <a th:href="@{/enote}" class="btn btn-default">Send Note</a>
+</div>
+</body>
+</html>

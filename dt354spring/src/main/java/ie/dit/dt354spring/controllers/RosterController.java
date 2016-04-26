@@ -48,6 +48,7 @@ public class RosterController {
 		} else {
 			model.addAttribute("depts", dRepo.findAll());
 			model.addAttribute("dept", new Department());
+			model.addAttribute("emp", currentEmp);
 			return "rosters_form";
 		}
 		
@@ -95,17 +96,20 @@ public class RosterController {
 		if(currentEmp == null){
 			return "redirect:/";
 		} else if(!currentEmp.getDept().getName().equalsIgnoreCase("Management")){
-				return "redirect:/";
+			model.addAttribute("rosters", rRepo.findByDeptName(currentEmp.getDept().getName()));
+			model.addAttribute("emp", currentEmp);
 		} else {
 			model.addAttribute("rosters", rRepo.findAll());
-			return "rosters_list";
+			model.addAttribute("emp", currentEmp);
 		}
-		
+		return "rosters_list";
 	}
 	
 	@RequestMapping("roster/delete/{id}")
-	public String deleteDepartment(@PathVariable Integer id, Model model){
-		rRepo.delete(id);;
+	public String deleteDepartment(@PathVariable Integer id, Model model, HttpServletRequest req){
+		Employee currentEmp = (Employee) req.getSession(false).getAttribute("currentEmp");
+		rRepo.delete(id);
+		model.addAttribute("emp", currentEmp);
 		return "redirect:/rosters";
 	}
 	

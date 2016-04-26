@@ -12,4 +12,5 @@ public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
 	List<Employee> findAll();
 	List<Employee> findAllByOrderByCodeAsc();
 	List<Employee> findAllByOrderByDeptNameAsc();
+	List<Employee> findTop3ByOrderByIdDesc();
 }

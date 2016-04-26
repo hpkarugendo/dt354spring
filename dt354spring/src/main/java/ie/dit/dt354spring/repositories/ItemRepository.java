@@ -9,4 +9,5 @@ import ie.dit.dt354spring.entities.Item;
 public interface ItemRepository extends CrudRepository<Item, Integer> {
     List<Item> findAll();
     List<Item> findAllByOrderByNameAsc();
+    List<Item> findTop3ByOrderByIdDesc();
 }

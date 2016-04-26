@@ -7,9 +7,11 @@
     <!--/*/ <th:block th:include="headers :: head"></th:block> /*/-->
 </head>
 <body>
- 
+ 	<div th:switch="${emp.dept.name}">
+    	<div th:case="MANAGEMENT"><!--/*/ <th:block th:include="menus :: menu-manager"></th:block> /*/--></div>
+    	<div th:case="*"><!--/*/ <th:block th:include="menus :: menu-employee"></th:block> /*/--></div>
+    </div>
 <div class="container">
-    <!--/*/ <th:block th:include="menus :: menu-manager"></th:block> /*/-->
     <h2>Roster Form</h2>
         <div>
             <form class="form-horizontal" th:action="@{/roster}" enctype="multipart/form-data"  method="post">

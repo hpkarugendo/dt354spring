@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+ 
+    <title>Enote</title>
+ 
+    <!--/*/ <th:block th:include="headers :: head"></th:block> /*/-->
+</head>
+<body>
+ 	<div th:switch="${emp.dept.name}">
+    	<div th:case="MANAGEMENT"><!--/*/ <th:block th:include="menus :: menu-manager"></th:block> /*/--></div>
+    	<div th:case="*"><!--/*/ <th:block th:include="menus :: menu-employee"></th:block> /*/--></div>
+    </div>
+<div class="container">
+    <h2>Enote Form</h2>
+        <div>
+            <form class="form" th:object="${enote}" th:action="@{/enote}" method="post">
+            <input type="hidden" th:field="*{id}"/>
+                <div class="form-group">
+                    <label class="control-label">To:</label>
+                    <select th:field="*{noteTo}" class="form-control">
+    						<option th:each="e : ${emps}" th:value="${e.id}" th:text="${e.name} + ' - ' + ${e.dept.name}">Employee</option>
+					</select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Subject:</label>
+                    <input type="text" th:field="*{subject}" required="required" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Note:</label>
+                    <textarea type="text" th:field="*{noteBody}" required="required" rows="6" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Send</button>
+                    <button type="reset" class="btn btn-default">Clear</button>
+                </div>
+            </form>
+    </div>
+</div>
+</body>
+</html>

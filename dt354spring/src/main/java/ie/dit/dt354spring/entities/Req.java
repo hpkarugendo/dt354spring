@@ -17,14 +17,15 @@ public class Req {
 	
 	public Req() {
 		super();
+		this.status = "New";
 	}
 
-	public Req(String fromDate, String toDate, String reason, String status, Employee employee) {
+	public Req(String fromDate, String toDate, String reason, Employee employee) {
 	    super();
 	    this.fromDate = fromDate;
 	    this.toDate = toDate;
 	    this.reason = reason;
-	    this.status = status;
+	    this.status = "New";
 	    this.employee = employee;
 	}
 

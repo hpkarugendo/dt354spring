@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+ 
+    <title>Employee</title>
+ 
+    <!--/*/ <th:block th:include="headers :: head"></th:block> /*/-->
+</head>
+<body>
+ 	<div th:switch="${emp.dept.name}">
+    	<div th:case="MANAGEMENT"><!--/*/ <th:block th:include="menus :: menu-manager"></th:block> /*/--></div>
+    	<div th:case="*"><!--/*/ <th:block th:include="menus :: menu-employee"></th:block> /*/--></div>
+    </div>
+<div class="container">
+    <h2>Employee Details</h2>
+    <div>
+        <table class="table" id="no-b">
+        	<tr>
+        		<th>Date</th>
+        		<td th:text="${enote.dateSent}" class="smallcell">Date</td>
+        	</tr>
+        	<tr>
+        		<th>Subject</th>
+        		<td th:text="${enote.subject}" class="smallcell">Subject</td>
+        	</tr>
+        	<tr>
+        		<th>Body</th>
+        		<td th:text="${enote.noteBody}" class="bigcell">Body</td>
+        	</tr>
+        	<tr>
+        		<th>From</th>
+        		<td th:text="${enote.noteFrom.name}" class="smallcell">From</td>
+        	</tr>
+        	<tr>
+        		<th  class="smallcell"><a th:href="${'/enote/reply/' + enote.id}" class="btn btn-info">Reply</a></th>
+        		<td></td>
+        	</tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -9,5 +9,6 @@ import ie.dit.dt354spring.entities.Roster;
 public interface RosterRepository extends CrudRepository<Roster, Integer>{
     List<Roster> findByDeptName(String name);
     List<Roster> findAll();
-    Roster findByFileName(String fileName);
+    List<Roster> findTop3ByOrderByIdDesc();
+    List<Roster> findTop3ByDeptNameOrderByIdDesc(String deptName);
 }

@@ -16,4 +16,5 @@ public interface OrderRepository extends CrudRepository<Order, Long>{
     List<Order> findAllByOrderStatus(String stat);
     List<Order> findAllByOrderByOrderTotalDesc();
     List<Order> findAllByOrderByOrderDate();
+    List<Order> findTop3ByOrderByIdDesc();
 }

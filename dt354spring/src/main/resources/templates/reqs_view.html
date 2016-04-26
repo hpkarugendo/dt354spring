@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+ 
+    <title>Request</title>
+ 
+    <!--/*/ <th:block th:include="headers :: head"></th:block> /*/-->
+</head>
+<body>
+ 	<div th:switch="${emp.dept.name}">
+    	<div th:case="MANAGEMENT"><!--/*/ <th:block th:include="menus :: menu-manager"></th:block> /*/--></div>
+    	<div th:case="*"><!--/*/ <th:block th:include="menus :: menu-employee"></th:block> /*/--></div>
+    </div>
+<div class="container">
+    <h2>Request Details</h2>
+    <div>
+        <table class="table table-hover table-bordered">
+        	<tr>
+        		<th>From: </th>
+        		<td th:text="${req.fromDate}">From</td>
+        	</tr>
+        	<tr>
+        		<th>To: </th>
+        		<td th:text="${req.toDate}">To</td>
+        	</tr>
+        	<tr>
+        		<th>Reason:</th>
+        		<td th:text="${req.reason}">Reason</td>
+        	</tr>
+        	<tr>
+        		<th>Status:</th>
+        		<td th:text="${req.status}">Status</td>
+        	</tr>
+        	<tr>
+        		<th>Employee</th>
+        		<td th:text="${req.employee.name}">Employee</td>
+        	</tr>
+        	<tr th:switch="${req.status}">
+        		<td th:case="'New'">
+        			<div class="row">
+        				<div th:switch="${emp.dept.name}">
+        					<div th:case="MANAGEMENT">
+        						<div class="col-md-6">
+        							<a th:href="${'/req/okay/' + req.id}">Approve</a>
+        						</div>
+        						<div class = "col-md-6">
+        							<a th:href="${'/req/nokay/' + req.id}">Deny</a>
+        						</div>
+        					</div>
+        				</div>
+        			</div>
+        		</td>
+        	</tr>
+        </table>    
+    </div>
+</div>
+</body>
+</html>

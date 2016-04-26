@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+ 
+    <title>Request</title>
+ 
+    <!--/*/ <th:block th:include="headers :: head"></th:block> /*/-->
+</head>
+<body>
+ 	<div th:switch="${emp.dept.name}">
+    	<div th:case="MANAGEMENT"><!--/*/ <th:block th:include="menus :: menu-manager"></th:block> /*/--></div>
+    	<div th:case="*"><!--/*/ <th:block th:include="menus :: menu-employee"></th:block> /*/--></div>
+    </div>
+<div class="container">
+    <h2>Request Form</h2>
+        <div>
+            <form class="form" th:object="${req}" th:action="@{/req}" method="post">
+            <input type="hidden" th:field="*{id}"/>
+                <div class="form-group">
+                    <label class="control-label">From [yyyyMMdd]:</label>
+                    <input type="text" th:field="*{fromDate}" required="required" placeholder="20160426" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">To [yyyyMMdd]:</label>
+                    <input type="text" th:field="*{toDate}" required="required" placeholder="20160526" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Reason:</label>
+                    <select th:field="*{reason}" class="form-control">
+    						<option value="HOLIDAY">HOLIDAY</option>
+    						<option value="SICKNESS">SICKNESS</option>
+    						<option value="TRAINING">TRAINING</option>
+    						<option value="TIME-OFF">TIME-OFF</option>
+    						<option value="EMERGENCY">"EMERGENCY"</option>
+						</select>
+                </div>
+                <div class="form-group">
+                	<label class="control-label"></label>
+                    	<button type="submit" class="btn btn-success">Save</button>
+                    	<button type="reset" class="btn btn-default">Clear</button>
+                </div>
+            </form>
+    </div>
+</div>
+</body>
+</html>

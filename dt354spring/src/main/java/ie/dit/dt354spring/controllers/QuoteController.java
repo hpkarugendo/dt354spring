@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import ie.dit.dt354spring.entities.Employee;
 import ie.dit.dt354spring.entities.Quote;
 import ie.dit.dt354spring.repositories.QuoteRepository;
 
@@ -24,10 +25,12 @@ public class QuoteController {
     
     @RequestMapping(value="/quote", method=RequestMethod.GET)
     public String getForm(Model model, HttpServletRequest req){
+    	Employee currentEmp = (Employee) req.getSession(false).getAttribute("currentEmp");
 	if(req.getSession(false) == null){
 	    return "redirect:/";
 	} else {
 	    model.addAttribute("newQuote", new Quote());
+	    model.addAttribute("emp", currentEmp);
 	    return "quotes_form";
 	}
     }
