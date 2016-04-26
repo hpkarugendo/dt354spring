@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+ 
+    <title>Orders</title>
+ 
+    <!--/*/ <th:block th:include="headers :: head"></th:block> /*/-->
+</head>
+<body>
+ 
+<div class="container">
+    <!--/*/ <th:block th:include="menus :: menu-manager"></th:block> /*/-->
+    <h2>Order List</h2>
+    <table class="table table-hover table-bordered">
+    	<thead>
+    		<tr>
+                <th><a th:href="@{/orders}">ID</a></th>
+                <th><a th:href="@{/orders-by-date}">DATE</a></th>
+                <th><a th:href="@{/orders-by-total}">TOTAL (&euro;)</a></th>
+                <th><a th:href="@{/orders-by-employee}">EMPLOYEE</a></th>
+                <th>STATUS</th>
+                <th>ITEMS</th>
+            </tr>
+    	</thead>
+        <tbody>
+        	<tr th:each="o : ${orders}">
+                <td><a th:href="${'/order/' + o.id}"><span th:text="${o.id}">Id</span></a></td>
+                <td th:text="${o.orderDate}">Date</td>
+                <td th:text="${#numbers.formatDecimal(o.orderTotal, 0, 'DEFAULT', 2, 'DEFAULT')}">Total</td>
+                <td th:text="${o.emp.name}">Employee</td>
+                <td th:text="${o.orderStatus}">Status</td>
+                <td th:text="${o.orderItems.size()}">Items</td>
+            </tr>
+        </tbody>
+        </table>
+</div>
+</body>
+</html>

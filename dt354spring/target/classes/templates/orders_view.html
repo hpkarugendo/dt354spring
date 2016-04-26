@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+ 
+    <title>Order</title>
+ 
+    <!--/*/ <th:block th:include="headers :: head"></th:block> /*/-->
+</head>
+<body>
+ 
+<div class="container">
+    <!--/*/ <th:block th:include="menus :: menu-manager"></th:block> /*/-->
+    <h2>Order Details</h2>
+    <div class="row">
+    	<div class="row">
+    		<div class="col-md-4">
+    			<b>Order Id: </b>
+    		</div>
+    		<div class="col-md-4">
+    			<p th:text="${order.id}">Id</p>
+    		</div>
+    	</div>
+    	<div class="row">
+    		<div class="col-md-4">
+    			<b>Order Date: </b>
+    		</div>
+    		<div class="col-md-4">
+    			<p th:text="${order.orderDate}">Date</p>
+    		</div>
+    	</div>
+    	<div class="row">
+    		<div class="col-md-4">
+    			<b>Order Table: </b>
+    		</div>
+    		<div class="col-md-4">
+    			<p th:text="${order.tableNo}">Table No</p>
+    		</div>
+    	</div>
+    	<div class="row">
+    		<div class="col-md-4">
+    			<b>Table Covers: </b>
+    		</div>
+    		<div class="col-md-4">
+    			<p th:text="${order.covers}">Id</p>
+    		</div>
+    	</div>
+    	<div class="row">
+    		<div class="col-md-4">
+    			<b>Employee: </b>
+    		</div>
+    		<div class="col-md-4">
+    			<p th:text="${order.emp.name}">Id</p>
+    		</div>
+    	</div>
+    	<div class="row">
+    		<div class="col-md-4">
+    			<b>Order Total: </b>
+    		</div>
+    		<div class="col-md-4">
+    			<p th:text="&euro; + ${#numbers.formatDecimal(order.orderTotal, 0, 'DEFAULT', 2, 'DEFAULT')}">Price</p>
+    		</div>
+    	</div>
+    	<div class="row">
+    		<div class="col-md-4">
+    			<b>Payment Method: </b>
+    		</div>
+    		<div class="col-md-4">
+    			<p th:text="${order.payMethod}">Id</p>
+    		</div>
+    	</div>
+    </div>
+    <div class="row">
+    	<h3>Order Items:</h3>
+    </div>
+    <div class="row">
+    	<div class="col-md-8">
+    		<table class="table table-hover table-bordered">
+    		<thead>
+    			<tr>
+    				<th>NAME</th>
+    				<th>PRICE (&euro;)</th>
+    				<th>NOTE</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+    			<tr th:each="i : ${order.orderItems}">
+    				<td th:text="${i.item.name}">Name</td>
+    				<td th:text="${#numbers.formatDecimal(i.item.price, 0, 'DEFAULT', 2, 'DEFAULT')}">Price</td>
+    				<td th:text="${i.littleNote}">Note</td>
+    			</tr>
+    		</tbody>
+    	</table>
+    	</div>
+    </div>
+</div>
+</body>
+</html>
