@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+ 
+    <title>Sales</title>
+ 
+    <!--/*/ <th:block th:include="headers :: head"></th:block> /*/-->
+</head>
+<body>
+ 
+<div class="container">
+    <!--/*/ <th:block th:include="menus :: menu-manager"></th:block> /*/-->
+    <h2>Sales List</h2>
+    <table class="table table-hover table-bordered">
+            <tr>
+                <th><a th:href="@{/sales}">ID</a></th>
+                <th><a th:href="@{/sales-by-name-all}">ITEM</a></th>
+                <th><a th:href="@{/sales-by-price-all}">TOTAL SALES (<span class="glyphicon glyphicon-euro"></span>)</a></th>
+                <th><a th:href="@{/sales-by-quantity-all}">TOTAL SALES (<span class="glyphicon glyphicon-plus"></span>)</a></th>
+            </tr>
+            <tr th:each="s : ${sales}">
+                <td th:text="${s.id}">Id</td>
+                <td th:text="${s.name}">Name</td>
+                <td th:text="${'&euro; ' + #numbers.formatDecimal(s.salesInPrice, 0, 'DEFAULT', 2, 'DEFAULT')}">Sales In Price</td>
+                <td th:text="${s.salesInQuantity}">Quantity</td>
+            </tr>
+        </table>
+</div>
+</body>
+</html>

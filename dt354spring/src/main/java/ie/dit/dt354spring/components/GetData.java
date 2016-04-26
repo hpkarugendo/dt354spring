@@ -12,9 +12,12 @@ import com.firebase.client.ValueEventListener;
 import ie.dit.dt354spring.entities.Employee;
 import ie.dit.dt354spring.entities.Item;
 import ie.dit.dt354spring.entities.Order;
+import ie.dit.dt354spring.entities.OrderItem;
+import ie.dit.dt354spring.entities.Sale;
 import ie.dit.dt354spring.repositories.EmployeeRepository;
 import ie.dit.dt354spring.repositories.ItemRepository;
 import ie.dit.dt354spring.repositories.OrderRepository;
+import ie.dit.dt354spring.repositories.SaleRepository;
 
 @Component
 public class GetData implements CommandLineRunner{
@@ -24,6 +27,8 @@ public class GetData implements CommandLineRunner{
     private EmployeeRepository eRepo;
     @Autowired
     private ItemRepository iRepo;
+    @Autowired
+    private SaleRepository sRepo;
 
     @Override
     public void run(String... arg0) throws Exception {
@@ -37,6 +42,20 @@ public class GetData implements CommandLineRunner{
 	        public void onDataChange(DataSnapshot snapshot) {
 	            for (DataSnapshot postSnapshot : snapshot.getChildren()) {
 	                Order post = postSnapshot.getValue(Order.class);
+	                for(OrderItem oi: post.getOrderItems()){
+	                	Sale s = sRepo.findByName(oi.getItem().getName());
+	                	if(s == null){
+	                		s = new Sale();
+	                		s.setName(oi.getItem().getName());
+	                		s.setSalesInQuantity(1);
+	                		s.setSalesInPrice(oi.getItem().getPrice());
+	                		sRepo.save(s);
+	                	} else {
+							s.setSalesInPrice(s.getSalesInPrice() + oi.getItem().getPrice());
+							s.setSalesInQuantity(s.getSalesInQuantity() + 1);
+							sRepo.save(s);
+						}
+	                }
 	                oRepo.save(post);
 	            }
 	            System.out.println("ORDERS SAVED");

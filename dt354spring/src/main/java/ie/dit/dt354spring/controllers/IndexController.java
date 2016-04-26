@@ -19,6 +19,7 @@ import ie.dit.dt354spring.repositories.OrderRepository;
 import ie.dit.dt354spring.repositories.QuoteRepository;
 import ie.dit.dt354spring.repositories.ReqRepository;
 import ie.dit.dt354spring.repositories.RosterRepository;
+import ie.dit.dt354spring.repositories.SaleRepository;
 
 @Controller
 public class IndexController {
@@ -36,6 +37,9 @@ public class IndexController {
 	private ReqRepository reRepo;
 	@Autowired
 	private OrderRepository oRepo;
+	@Autowired
+	private SaleRepository sRepo;
+	
 	private Employee currentEmp;
 
 	@RequestMapping("/")
@@ -71,6 +75,8 @@ public class IndexController {
 					model.addAttribute("emps", eRepo.findTop3ByOrderByIdDesc());
 					model.addAttribute("rosters", rRepo.findTop3ByOrderByIdDesc());
 					model.addAttribute("reqs", reRepo.findTop3ByStatusOrderByIdDesc("New"));
+					model.addAttribute("n-sales", sRepo.findTop10ByOrderBySalesInQuantityDesc());
+					model.addAttribute("p-sales", sRepo.findTop10ByOrderBySalesInPriceDesc());
 					model.addAttribute("items", iRepo.findTop3ByOrderByIdDesc());
 					model.addAttribute("orders", oRepo.findTop3ByOrderByIdDesc());
 					model.addAttribute("enotes", enRepo.findTop3ByNoteToOrderByIdDesc(currentEmp));
