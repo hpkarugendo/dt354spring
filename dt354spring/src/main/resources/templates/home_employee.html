@@ -25,21 +25,25 @@
     					<table class="table">
     						<tbody>
     							<tr>
-    								<th>Name: </th>
+    								<th class="ava-t">Name: </th>
     								<td th:text="${emp.name}">Name</td>
     							</tr>
     							<tr>
-    								<th>Department: </th>
+    								<th class="ava-t">Department: </th>
     								<td th:text="${emp.dept.name}">Department</td>
     							</tr>
     							<tr>
-    								<th>Email: </th>
+    								<th class="ava-t">Email: </th>
     								<td th:text="${emp.email}">Email</td>
     							</tr>
     							<tr>
-    								<th>Phone: </th>
+    								<th class="ava-t">Phone: </th>
     								<td th:text="${emp.phone}">Phone</td>
     							</tr>
+    							<tr>
+									<th class="ava-t">Password: </th>
+									<td><a th:href="@{/change-pass}" class="btn btn-default">Change</a></td>
+								</tr>
     						</tbody>
     					</table>
     				</div>
@@ -135,13 +139,13 @@
 										<tr>
 											<th>DATE</th>
 											<th>REASON</th>
-											<th>EMPLOYEE</th>
+											<th>STATUS</th>
 										</tr>
 										<tr th:each="re : ${reqs}">
 											<td><a th:href="${'/req/' + re.id}"><span
 													th:text="${re.fromDate}">Date</span></a></td>
 											<td th:text="${re.reason}">Reason</td>
-											<td th:text="${re.employee.name}">Employee</td>
+											<td th:text="${re.status}">Status</td>
 										</tr>
 									</table>
 								</div>

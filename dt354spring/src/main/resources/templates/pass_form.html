@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+ 
+    <title>Password</title>
+ 
+    <!--/*/ <th:block th:include="headers :: head"></th:block> /*/-->
+</head>
+<body>
+ 	<div th:switch="${emp.dept.name}">
+    	<div th:case="MANAGEMENT"><!--/*/ <th:block th:include="menus :: menu-manager"></th:block> /*/--></div>
+    	<div th:case="*"><!--/*/ <th:block th:include="menus :: menu-employee"></th:block> /*/--></div>
+    </div>
+<div class="container">
+    <div th:if="${errorm != null}">
+    	<div class="alert alert-danger">
+    		<h4 th:text="${errorm}">Error</h4>
+    	</div>
+    </div>
+    <h2>New Password Form</h2>
+        <div>
+            <form class="form" th:action="@{/change-pass}" method="post">
+                <div class="row">
+                	<div class="form-group col-md-4">
+                    	<label class="control-label">New Password:</label>
+                   		<input type="password" name="pass1" required="required" class="form-control" />
+                	</div>
+                </div>
+                <div class="row">
+                	<div class="form-group col-md-4">
+                   		<label class="control-label">Confirm Password:</label>
+                    	<input type="password" name="pass2" required="required" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="reset" class="btn btn-default">Clear</button>
+                </div>
+            </form>
+    </div>
+</div>
+</body>
+</html>

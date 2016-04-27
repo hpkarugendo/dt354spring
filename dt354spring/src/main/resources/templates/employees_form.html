@@ -11,6 +11,11 @@
 <div class="container">
     <!--/*/ <th:block th:include="menus :: menu-manager"></th:block> /*/-->
     <h2>Employee Form</h2>
+     <div th:if="${errorm != null}">
+    	<div class="alert alert-danger">
+    		<h4 th:text="${errorm}">Error</h4>
+    	</div>
+    </div>
         <div>
             <form class="form" th:object="${emp}" th:action="@{/employee}" method="post">
             <input type="hidden" th:field="*{id}"/>

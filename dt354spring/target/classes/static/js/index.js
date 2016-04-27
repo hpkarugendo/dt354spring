@@ -1,66 +1,53 @@
-// Load the Visualization API and the corechart package.
-google.charts.load('current', {
-	'packages' : [ 'corechart' ]
-});
-
-// Set a callback to run when the Google Visualization API is loaded.
-google.charts.setOnLoadCallback(drawChart);
-
-// Callback that creates and populates a data table,
-// instantiates the pie chart, passes in the data and
-// draws it.
-function drawChart() {
-	var jsonData;
-	var items = new Array();
-	var prices = new Array();
-	var rows = new Array();
-	var item;
-	var price;
-	
-	jQuery.ajax({
-		type : "GET",
-		url : "http://localhost:8080/rest/sales-by-price",
-		contentType : "application/json; charset=utf-8",
-		dataType : "json",
-		success : function(data, status, jqXHR) {
-			/*alert("Status: " + status + "\nItem[0]:" + data[0].name);*/
-			jsonData = data;
-		},
-
-		error : function(jqXHR, status) {
-			alert("Status: " + status + "\nError:" + jqXHR);
-		}
+function charts(data, ChartType) {
+	var c = ChartType;
+	var jsonData = data;
+	google.load("visualization", "1", {
+		packages : [ "corechart" ],
+		callback : drawVisualization
 	});
-	
-	alert(jsonData.length);
-	for(var i = 0; i < jsonData.length; i++){
-		items[i] = jsonData[i].name;
-		prices.push(jsonData[i].salesInPrice);
-	}
-	
-	for(var i = 0; i < 10; i++){
-		item = items[i];
-		price = parseInt(prices[i]);
-		rows.push([item, price]);
-	}
-	
-	var data2 = new google.visualization.DataTable();
-	data2.addColumn('string', 'Items');
-	data2.addColumn('number', 'Sales');
-	data2.addRows(rows);
-	
-	var options = {
-		      title: 'Top 10 Sales In Price',
-		      'width':600,
-	           'height':300
-		    };
-	// Instantiate and draw our chart, passing in some options.
-	var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-    chart.draw(data2, options);
+	function drawVisualization() {
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', 'Item');
+		data.addColumn('number', 'Revenue');
+		$.each(jsonData, function(i, jsonData) {
+			var value = jsonData.salesInPrice;
+			var name = jsonData.name;
+			data.addRows([ [ name, value ] ]);
+		});
 
+		var options = {
+			title : "Top 5 Selling Items In Revenue",
+			animation : {
+				duration : 3000,
+				easing : 'out',
+				startup : true
+			},
+			colorAxis : {
+				colors : [ '#54C492', '#cc0000' ]
+			},
+			datalessRegionColor : '#dedede',
+			defaultColor : '#dedede'
+		};
+
+		var chart;
+		if (c == "ColumnChart") // Column Charts
+			chart = new google.visualization.ColumnChart(document
+					.getElementById('chart_div'));
+		else if (c == "PieChart") // Pie Charts
+			chart = new google.visualization.PieChart(document
+					.getElementById('piechart_div'));
+		else if (c == "BarChart") // Bar Charts
+			chart = new google.visualization.BarChart(document
+					.getElementById('bar_div'));
+		else if (c == "GeoChart") // Geo Charts
+			chart = new google.visualization.GeoChart(document
+					.getElementById('regions_div'));
+
+		chart.draw(data, options);
+	}
 }
 
-function hide(obj) {
+/*function hide(obj) {
 	jQuery.ajax({
 		type : "GET",
 		url : "http://localhost:8080/rest/sales-by-price",
@@ -74,4 +61,4 @@ function hide(obj) {
 			alert("Status: " + status + "\nError:" + jqXHR);
 		}
 	});
-}
+}*/

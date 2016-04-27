@@ -8,7 +8,8 @@ import ie.dit.dt354spring.entities.Employee;
 
 public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
 	Employee findByCode(String code);
-	Employee findByEmail(String email);
+	Employee findByEmail(String code);
+	Employee findByEmailAndPassword(String email, String password);
 	List<Employee> findAll();
 	List<Employee> findAllByOrderByCodeAsc();
 	List<Employee> findAllByOrderByDeptNameAsc();

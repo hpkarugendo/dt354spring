@@ -50,7 +50,7 @@ public class IndexController {
 
 	@RequestMapping("/login")
 	public ModelAndView index(User user, HttpServletRequest req) {
-		currentEmp = eRepo.findByEmail(user.getEmail());
+		currentEmp = eRepo.findByEmailAndPassword(user.getEmail(), user.getPassword());
 
 		if (currentEmp != null) {
 			Logger log = Logger.getLogger(IndexController.class);

@@ -1,4 +1,4 @@
-package ie.dit.dt354spring.loaders;
+package ie.dit.dt354spring.components;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +16,13 @@ import ie.dit.dt354spring.repositories.ItemRepository;
 import ie.dit.dt354spring.repositories.QuoteRepository;
 
 @Component
-public class DefaultEntityLoader implements ApplicationListener<ContextRefreshedEvent>{
+public class LoaderComponent implements ApplicationListener<ContextRefreshedEvent>{
 	
 	private DepartmentRepository dRepo;
 	private EmployeeRepository eRepo;
 	private ItemRepository iRepo;
 	private QuoteRepository qRepo;
-	private Logger log = Logger.getLogger(DefaultEntityLoader.class);
+	private Logger log = Logger.getLogger(LoaderComponent.class);
 	
 	@Autowired
 	public void setRepo(DepartmentRepository deptRepo, EmployeeRepository empRepo,

@@ -5,6 +5,19 @@
 <title>Home</title>
 
 <!--/*/ <th:block th:include="headers :: head"></th:block> /*/-->
+	<!-- <script>
+		$(document).ready(function (){
+			url='http://localhost:8080/rest/sales-by-price'; // API URL
+			alert("Getting ready");
+			ajax_data('GET',url, function(data)
+			{
+				charts(data,"ColumnChart"); // Column Charts
+				charts(data,"PieChart"); // Pie Charts
+				charts(data,"BarChart"); // Bar Charts
+				charts(data,"GeoChart"); // Geo Charts
+			});
+		});
+	</script> -->
 </head>
 <body>
 
@@ -26,20 +39,24 @@
 						<table class="table">
 							<tbody>
 								<tr>
-									<th>Name:</th>
+									<th class="ava-t">Name:</th>
 									<td th:text="${emp.name}">Name</td>
 								</tr>
 								<tr>
-									<th>Department:</th>
+									<th class="ava-t">Department:</th>
 									<td th:text="${emp.dept.name}">Department</td>
 								</tr>
 								<tr>
-									<th>Email:</th>
+									<th class="ava-t">Email:</th>
 									<td th:text="${emp.email}">Email</td>
 								</tr>
 								<tr>
-									<th>Phone:</th>
+									<th class="ava-t">Phone:</th>
 									<td th:text="${emp.phone}">Phone</td>
+								</tr>
+								<tr>
+									<th class="ava-t">Password: </th>
+									<td><a th:href="@{/change-pass}" class="btn btn-default">Change</a></td>
 								</tr>
 							</tbody>
 						</table>
@@ -265,7 +282,11 @@
 							<div class="panel-heading">Report - This Months Top Selling
 								Items</div>
 							<div class="panel-body panel-12">
-								<div id="chart_div">
+								<div>
+									<div id="chart_div"></div>
+									<div id="regions_div" ></div>
+									<div id="piechart_div" ></div>
+									<div id="bar_div" ></div>
 									<div class="row">
 										<table class="table table-hover table-bordered tb-md">
 											<tr>

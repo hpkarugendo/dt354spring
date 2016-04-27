@@ -24,9 +24,10 @@
 						<td th:text="${r.id}">Id</td>
 						<td th:text="${r.rosterDate}">Date</td>
 						<td th:text="${r.dept.name}">Department</td>
-						<td><a th:href="@{'|rosters' + ${r.fileName}|}">Download
-								<span class="glyphicon glyphicon-download-alt"></span>
-						</a></td>
+						<td><a th:href="@{'rosters/' + ${r.fileName}}" class="btn btn-sm btn-default">
+								Download <span class="glyphicon glyphicon-download-alt"></span>
+							</a>
+						</td>
 						<td><a th:href="${'/roster/delete/' + r.id}">Delete</a></td>
 					</tr>
 				</table>

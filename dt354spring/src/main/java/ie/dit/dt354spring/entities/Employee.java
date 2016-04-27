@@ -24,6 +24,8 @@ public class Employee{
 	
 	public Employee() {
 		super();
+		this.password = "pass";
+		this.loggedIn = false;
 	}
 
 	public Employee(String code, String name, String email, String phone, String gender) {
