@@ -22,7 +22,7 @@
   								<img th:src="@{images/avatars/female.png}" alt="avatar image" />
   							</div>
 						</div>
-    					<table class="table">
+    					<table class="table profileT">
     						<tbody>
     							<tr>
     								<th class="ava-t">Name: </th>
@@ -30,11 +30,11 @@
     							</tr>
     							<tr>
     								<th class="ava-t">Department: </th>
-    								<td th:text="${emp.dept.name}">Department</td>
+    								<td th:text="${#strings.abbreviate(emp.dept.name, 18)}">Department</td>
     							</tr>
     							<tr>
     								<th class="ava-t">Email: </th>
-    								<td th:text="${emp.email}">Email</td>
+    								<td th:text="${#strings.abbreviate(emp.email, 18)}">Email</td>
     							</tr>
     							<tr>
     								<th class="ava-t">Phone: </th>
