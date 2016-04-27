@@ -75,8 +75,8 @@ public class IndexController {
 					model.addAttribute("emps", eRepo.findTop3ByOrderByIdDesc());
 					model.addAttribute("rosters", rRepo.findTop3ByOrderByIdDesc());
 					model.addAttribute("reqs", reRepo.findTop3ByStatusOrderByIdDesc("New"));
-					model.addAttribute("n-sales", sRepo.findTop10ByOrderBySalesInQuantityDesc());
-					model.addAttribute("p-sales", sRepo.findTop10ByOrderBySalesInPriceDesc());
+					model.addAttribute("nsales", sRepo.findTop5ByOrderBySalesInQuantityDesc());
+					model.addAttribute("psales", sRepo.findTop5ByOrderBySalesInPriceDesc());
 					model.addAttribute("items", iRepo.findTop3ByOrderByIdDesc());
 					model.addAttribute("orders", oRepo.findTop3ByOrderByIdDesc());
 					model.addAttribute("enotes", enRepo.findTop3ByNoteToOrderByIdDesc(currentEmp));
@@ -93,9 +93,9 @@ public class IndexController {
 			} else {
 				return "redirect:/";
 			}
-		} else {
-			return "redirect:/";
 		}
+		
+		return "redirect:/";
 	}
 
 	@RequestMapping("/logout")

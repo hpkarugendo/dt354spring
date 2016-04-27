@@ -28,7 +28,7 @@ public class SaleService {
     
     @RequestMapping(value="/rest/sales-by-quantity", method=RequestMethod.GET)
     public String getSalesQ( HttpServletResponse resp){
-		List<Sale> sales = sRepo.findTop10ByOrderBySalesInQuantityDesc();
+		List<Sale> sales = sRepo.findTop5ByOrderBySalesInQuantityDesc();
 		Gson gson = new Gson();
 		String jsonString = gson.toJson(sales);
 		resp.setContentType("application/json");
@@ -37,7 +37,7 @@ public class SaleService {
     
     @RequestMapping(value="/rest/sales-by-price", method=RequestMethod.GET)
     public String getSalesP( HttpServletResponse resp){
-		List<Sale> sales = sRepo.findTop10ByOrderBySalesInPriceDesc();
+		List<Sale> sales = sRepo.findTop5ByOrderBySalesInPriceDesc();
 		Gson gson = new Gson();
 		String jsonString = gson.toJson(sales);
 		resp.setContentType("application/json");

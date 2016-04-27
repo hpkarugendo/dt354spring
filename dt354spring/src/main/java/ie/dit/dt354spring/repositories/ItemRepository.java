@@ -10,4 +10,5 @@ public interface ItemRepository extends CrudRepository<Item, Integer> {
     List<Item> findAll();
     List<Item> findAllByOrderByNameAsc();
     List<Item> findTop3ByOrderByIdDesc();
+    Item findByName(String name);
 }

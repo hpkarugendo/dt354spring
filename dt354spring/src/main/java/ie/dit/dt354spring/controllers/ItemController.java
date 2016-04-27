@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ie.dit.dt354spring.entities.Employee;
 import ie.dit.dt354spring.entities.Item;
@@ -33,9 +34,15 @@ public class ItemController {
 	}
 	
 	@RequestMapping(value="item", method=RequestMethod.POST)
-	public String createItem(Item item){
+	public String createItem(Item item, Model model){
+		Item i = iRepo.findByName(item.getName());
+		if(i != null){
+			// TODO Auto-generated catch block
+			model.addAttribute("errorm", "Item with that name already exists");
+			return "items_form";
+		}
 		iRepo.save(item);
-		return "redirect:/item/" + item.getId();
+		return "redirect:/items";
 	}
 	
 	@RequestMapping("item/{id}")

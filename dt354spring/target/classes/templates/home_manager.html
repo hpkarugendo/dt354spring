@@ -50,13 +50,20 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="panel panel-info">
-							<div class="panel-heading">Report - This Months Top Selling
-								Items</div>
-							<div class="panel-body panel-12">
-								<div id="chart_div">
-								</div>
-								<div onclick="hide(this)" class="alert alert-info">
-									<h5> Click To Test GET Request</h5>
+							<div class="panel-heading">Quote of The day</div>
+							<div class="panel-body panel-12-emp">
+								<div class="qPanel">
+									<div class="row">
+										<p th:inline="text" id="quote-quote">
+											"[[${qotd.dayQuote}]]"</p>
+										<p th:text="${qotd.dayQuoter}" id="quote-quoter">quoter</p>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<a href="#" th:href="@{/quote}"
+												class="btn btn-info panelNewBtnR">Add New Quote</a>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -68,25 +75,24 @@
 							<div class="panel-heading">Orders</div>
 							<div class="panel-body panel-6">
 								<table class="table table-hover table-bordered tb-md">
-									<thead>
-										<tr>
-											<th>ID</th>
-											<th>TOTAL (&euro;)</th>
-											<th>EMPLOYEE</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr th:each="o : ${orders}">
-											<td><a th:href="${'/order/' + o.id}"><span
-													th:text="${o.id}">Id</span></a></td>
-											<td
-												th:text="${#numbers.formatDecimal(o.orderTotal, 0, 'DEFAULT', 2, 'DEFAULT')}">Total</td>
-											<td th:text="${o.emp.name}">Employee</td>
-										</tr>
-									</tbody>
+									<tr>
+										<th>ID</th>
+										<th>TOTAL (&euro;)</th>
+										<th>EMPLOYEE</th>
+									</tr>
+									<tr th:each="o : ${orders}">
+										<td><a th:href="${'/order/' + o.id}"><span
+												th:text="${o.id}">Id</span></a></td>
+										<td
+											th:text="${#numbers.formatDecimal(o.orderTotal, 0, 'DEFAULT', 2, 'DEFAULT')}">Total</td>
+										<td th:text="${o.emp.name}">Employee</td>
+									</tr>
 								</table>
 								<div class="row">
-									<a href="#" th:href="@{/orders}" class="btn btn-info panelNewBtn" >View All</a>
+									<div class="col-md-6">
+										<a href="#" th:href="@{/orders}"
+											class="btn btn-info panelNewBtn">View All</a>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -106,12 +112,20 @@
 											<td><a th:href="${'/item/' + item.id}"><span
 													th:text="${item.id}">Id</span></a></td>
 											<td th:text="${item.name}">Name</td>
-											<td th:text="${#numbers.formatDecimal(item.price, 0, 'DEFAULT', 2, 'DEFAULT')}">Price</td>
+											<td
+												th:text="${#numbers.formatDecimal(item.price, 0, 'DEFAULT', 2, 'DEFAULT')}">Price</td>
 										</tr>
 									</table>
 								</div>
 								<div class="row">
-									<a href="#" th:href="@{/items}" class="btn btn-info panelNewBtn" >View All</a>
+									<div class="col-md-6">
+										<a href="#" th:href="@{/items}"
+											class="btn btn-info panelNewBtn">View All</a>
+									</div>
+									<div class="col-md-6">
+										<a href="#" th:href="@{/item}"
+											class="btn btn-info panelNewBtnR">Add New</a>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -120,12 +134,12 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="panel panel-info">
-							<div class="panel-heading">Requests</div>
+							<div class="panel-heading">Time-Off Requests</div>
 							<div class="panel-body panel-6">
 								<div class="row">
 									<table class="table table-hover table-bordered tb-md">
 										<tr>
-											<th>FROM</th>
+											<th>DATE</th>
 											<th>REASON</th>
 											<th>EMPLOYEE</th>
 										</tr>
@@ -138,7 +152,12 @@
 									</table>
 								</div>
 								<div class="row">
-									<a href="#" th:href="@{/reqs}" class="btn btn-info panelNewBtn" >View All</a>
+									<div class="col-md-6">
+										<div class="col-md-6">
+											<a href="#" th:href="@{/reqs}"
+												class="btn btn-info panelNewBtn">View All</a>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -163,7 +182,14 @@
 									</table>
 								</div>
 								<div class="row">
-									<a href="#" th:href="@{/enotes}" class="btn btn-info panelNewBtn" >View All</a>
+									<div class="col-md-6">
+										<a href="#" th:href="@{/enotes}"
+											class="btn btn-info panelNewBtn">View All</a>
+									</div>
+									<div class="col-md-6">
+										<a href="#" th:href="@{/enote}"
+											class="btn btn-info panelNewBtnR">Compose New</a>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -176,26 +202,29 @@
 							<div class="panel-body panel-6">
 								<div class="row">
 									<table class="table table-hover table-bordered tb-md">
-										<thead>
-											<tr>
-												<th>Date</th>
-												<th>Department</th>
-												<th>Download</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr th:each="r : ${rosters}">
-												<td th:text="${r.rosterDate}">Name</td>
-												<td th:text="${r.dept.name}">Department</td>
-												<td><a th:href="@{'rosters/' + ${r.fileName}}"
-													class="btn btn-sm btn-default">Download<span
-														class="glyphicon glyphicon-download-alt"></span></a></td>
-											</tr>
-										</tbody>
+										<tr>
+											<th>DATE</th>
+											<th>DEPARTMENT</th>
+											<th>ACTION</th>
+										</tr>
+										<tr th:each="r : ${rosters}">
+											<td th:text="${r.rosterDate}">Name</td>
+											<td th:text="${r.dept.name}">Department</td>
+											<td><a th:href="@{'rosters/' + ${r.fileName}}"
+												class="btn btn-sm btn-default">Download<span
+													class="glyphicon glyphicon-download-alt"></span></a></td>
+										</tr>
 									</table>
 								</div>
 								<div class="row">
-									<a href="#" th:href="@{/rosters}" class="btn btn-info panelNewBtn" >View All</a>
+									<div class="col-md-6">
+										<a href="#" th:href="@{/rosters}"
+											class="btn btn-info panelNewBtn">View All</a>
+									</div>
+									<div class="col-md-6">
+										<a href="#" th:href="@{/roster}"
+											class="btn btn-info panelNewBtnR">Add New</a>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -206,22 +235,25 @@
 							<div class="panel-body panel-6">
 								<div class="row">
 									<table class="table table-hover table-bordered tb-md">
-										<thead>
-											<tr>
-												<th>Name</th>
-												<th>Department</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr th:each="emp : ${emps}">
-												<td th:text="${emp.name}">Name</td>
-												<td th:text="${emp.dept.name}">Department</td>
-											</tr>
-										</tbody>
+										<tr>
+											<th>NAME</th>
+											<th>DEPARTMENT</th>
+										</tr>
+										<tr th:each="emp : ${emps}">
+											<td th:text="${emp.name}">Name</td>
+											<td th:text="${emp.dept.name}">Department</td>
+										</tr>
 									</table>
 								</div>
 								<div class="row">
-									<a href="#" th:href="@{/employees}" class="btn btn-info panelNewBtn" >View All</a>
+									<div class="col-md-6">
+										<a href="#" th:href="@{/employees}"
+											class="btn btn-info panelNewBtn">View All</a>
+									</div>
+									<div class="col-md-6">
+										<a href="#" th:href="@{/employee}"
+											class="btn btn-info panelNewBtnR">Add New</a>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -230,16 +262,35 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="panel panel-info">
-							<div class="panel-heading">Quote of The day</div>
-							<div class="panel-body panel-12-emp">
-								<div class="row">
-									<p th:inline="text" id="quote-quote">
-										"[[${qotd.dayQuote}]]"</p>
-									<p th:text="${qotd.dayQuoter}" id="quote-quoter">quoter</p>
+							<div class="panel-heading">Report - This Months Top Selling
+								Items</div>
+							<div class="panel-body panel-12">
+								<div id="chart_div">
+									<div class="row">
+										<table class="table table-hover table-bordered tb-md">
+											<tr>
+												<th>ID</th>
+												<th>ITEM</th>
+												<th>REVENUE</th>
+											</tr>
+											<tr th:each="s : ${psales}">
+												<td th:text="${s.id}">Id</td>
+												<td th:text="${s.name}">Name</td>
+												<td
+													th:text="${'&euro; ' + #numbers.formatDecimal(s.salesInPrice, 0, 'DEFAULT', 2, 'DEFAULT')}">Price</td>
+											</tr>
+										</table>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<a href="#" th:href="@{/sales}"
+												class="btn btn-info panelNewBtn">View All</a>
+										</div>
+									</div>
 								</div>
-								<div class="row">
-									<a href="#" th:href="@{/quote}" class="btn btn-info panelNewBtn" >Add New Quote</a>
-								</div>
+								<!-- <div onclick="hide(this)" class="alert alert-info">
+									<h5> Click To Test GET Request</h5>
+								</div> -->
 							</div>
 						</div>
 					</div>

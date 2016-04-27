@@ -17,12 +17,12 @@
             <form class="form" th:object="${req}" th:action="@{/req}" method="post">
             <input type="hidden" th:field="*{id}"/>
                 <div class="form-group">
-                    <label class="control-label">From [yyyyMMdd]:</label>
-                    <input type="text" th:field="*{fromDate}" required="required" placeholder="20160426" class="form-control" />
+                    <label class="control-label">From:</label>
+                    <input type="text" th:field="*{fromDate}" required="required" placeholder="yyyyMMdd eg 20160426" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label class="control-label">To [yyyyMMdd]:</label>
-                    <input type="text" th:field="*{toDate}" required="required" placeholder="20160526" class="form-control" />
+                    <label class="control-label">To:</label>
+                    <input type="text" th:field="*{toDate}" required="required" placeholder="yyyyMMdd eg 20160526" class="form-control" />
                 </div>
                 <div class="form-group">
                     <label class="control-label">Reason:</label>
@@ -31,7 +31,7 @@
     						<option value="SICKNESS">SICKNESS</option>
     						<option value="TRAINING">TRAINING</option>
     						<option value="TIME-OFF">TIME-OFF</option>
-    						<option value="EMERGENCY">"EMERGENCY"</option>
+    						<option value="EMERGENCY">EMERGENCY</option>
 						</select>
                 </div>
                 <div class="form-group">

@@ -14,33 +14,25 @@
 <div class="container">
     <h2>Roster Form</h2>
         <div>
-            <form class="form-horizontal" th:action="@{/roster}" enctype="multipart/form-data"  method="post">
+            <form class="form" th:action="@{/roster}" enctype="multipart/form-data"  method="post">
             
                 <div class="form-group">
-                    <label class="col-md-4 control-label">Department:</label>
-                    <div class="col-md-6">
-                        <select name="dept" class="form-control">
+                    <label class="control-label">Department:</label>
+                    <select name="dept" class="form-control">
     						<option th:each="d : ${depts}" th:value="${d.id}" th:text="${d.name}">Department</option>
-						</select>
-                    </div>
+					</select>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-4 control-label">Date (yyyyMMdd):</label>
-                    <div class="col-md-6">
-                        <input type="text" name="rosterDate" class="form-control" placeholder="20160426"/>
-                    </div>
+                    <label class="control-label">Date:</label>
+                    <input type="text" name="rosterDate" class="form-control" placeholder="yyyyMMdd eg 20160426" />
                 </div>
                 <div class="form-group">
-                    <label class="col-md-4 control-label">File (PDF):</label>
-                    <div class="col-md-6">
-                        <input type="file" name="rosterFile" class="file-loading" />
-                    </div>
+                    <label class="control-label">File (PDF):</label>
+                    <input type="file" name="rosterFile" class="form-control" />
                 </div>
                 <div class="form-group">
-                	<label class="col-md-4 control-label"></label>
-                    <div class="col-md-6">
-                    	<button type="submit" class="btn btn-success">Save</button>
-                    </div>
+                	<label class="control-label"></label>
+                    <button type="submit" class="btn btn-success">Save</button>
                 </div>
             </form>
     </div>

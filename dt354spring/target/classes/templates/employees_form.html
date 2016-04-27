@@ -12,55 +12,40 @@
     <!--/*/ <th:block th:include="menus :: menu-manager"></th:block> /*/-->
     <h2>Employee Form</h2>
         <div>
-            <form class="form-horizontal" th:object="${emp}" th:action="@{/employee}" method="post">
+            <form class="form" th:object="${emp}" th:action="@{/employee}" method="post">
             <input type="hidden" th:field="*{id}"/>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Code:</label>
-                    <div class="col-sm-10">
-                        <input type="number" th:field="*{code}" required="required" min="1000" max="9999" class="form-control" />
-                    </div>
+                    <label class="control-label">Code:</label>
+                    <input type="number" th:field="*{code}" required="required" min="1000" max="9999" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Name:</label>
-                    <div class="col-sm-10">
-                        <input type="text" th:field="*{name}" required="required" class="form-control" />
-                    </div>
+                    <label class="control-label">Name:</label>
+                    <input type="text" th:field="*{name}" required="required" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Email:</label>
-                    <div class="col-sm-10">
-                        <input type="text" th:field="*{email}" required="required" class="form-control" />
-                    </div>
+                    <label class="control-label">Email:</label>
+                    <input type="text" th:field="*{email}" required="required" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Phone:</label>
-                    <div class="col-sm-10">
-                        <input type="text" th:field="*{phone}" required="required" class="form-control" />
-                    </div>
+                    <label class="control-label">Phone:</label>
+                    <input type="text" th:field="*{phone}" required="required" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Gender:</label>
-                    <div class="col-sm-10">
-                        <select th:field="*{gender}" class="form-control">
-    						<option value="FEMALE">FEMALE</option>
-    						<option value="MALE">MALE</option>
-						</select>
-                    </div>
+                    <label class="control-label">Gender:</label>
+                    <select th:field="*{gender}" class="form-control">
+    					<option value="FEMALE">FEMALE</option>
+    					<option value="MALE">MALE</option>
+					</select>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Department:</label>
-                    <div class="col-sm-10">
-                        <select th:field="*{dept}" class="form-control">
-    						<option th:each="d : ${depts}" th:value="${d.id}" th:text="${d.name}">Department</option>
-						</select>
-                    </div>
+                    <label class="control-label">Department:</label>
+                    <select th:field="*{dept}" class="form-control">
+    					<option th:each="d : ${depts}" th:value="${d.id}" th:text="${d.name}">Department</option>
+					</select>
                 </div>
                 <div class="form-group">
-                	<label class="col-sm-2 control-label"></label>
-                    <div class="col-sm-10">
-                    	<button type="submit" class="btn btn-success">Save</button>
-                    	<button type="reset" class="btn btn-default">Clear</button>
-                    </div>
+                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="reset" class="btn btn-default">Clear</button>
                 </div>
             </form>
     </div>

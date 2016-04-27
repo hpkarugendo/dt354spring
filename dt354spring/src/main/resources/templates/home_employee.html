@@ -51,7 +51,7 @@
     					<div class="panel panel-info">
     						<div class="panel-heading">Quote of The day</div>
     						<div class="panel-body panel-12-emp">
-    							<div>
+    							<div class="qPanel">
     								<p th:inline="text" id="quote-quote">
 										"[[${qotd.dayQuote}]]"
 									</p>
@@ -68,14 +68,11 @@
     						<div class="panel-body panel-12-emp">
     							<div class="row">
 									<table class="table table-hover table-bordered tb-md">
-										<thead>
 											<tr>
-												<th>Date</th>
-												<th>Department</th>
-												<th>Download</th>
+												<th>DATE</th>
+												<th>DEPARTMENT</th>
+												<th>ACTION</th>
 											</tr>
-										</thead>
-										<tbody>
 											<tr th:each="r : ${rosters}">
 												<td th:text="${r.rosterDate}">Name</td>
 												<td th:text="${r.dept.name}">Department</td>
@@ -83,11 +80,12 @@
 													class="btn btn-sm btn-default">Download<span
 														class="glyphicon glyphicon-download-alt"></span></a></td>
 											</tr>
-										</tbody>
 									</table>
 								</div>
 								<div class="row">
-									<a href="#" th:href="@{/rosters}" class="btn btn-info panelNewBtn" >View All</a>
+									<div class="col-md-6">
+										<a href="#" th:href="@{/rosters}" class="btn btn-info panelNewBtn" >View All</a>
+									</div>
 								</div>
     						</div>
     					</div>
@@ -104,17 +102,24 @@
 											<th>DATE</th>
 											<th>SUBJECT</th>
 											<th>FROM</th>
+											<th>ACTION</th>
 										</tr>
 										<tr th:each="n : ${enotes}">
 											<td><a th:href="${'/enote/' + n.id}"><span
 													th:text="${#dates.format(n.dateSent, 'yyyyMMdd HH:mm:ss')}">Date</span></a></td>
 											<td th:text="${n.subject}">Subject</td>
 											<td th:text="${n.noteFrom.name}">From</td>
+											<td><a th:href="${'/enote/reply/' + n.id}" class="btn btn-sm btn-default">Reply</a></td>
 										</tr>
 									</table>
 								</div>
 								<div class="row">
-									<a href="#" th:href="@{/enotes}" class="btn btn-info panelNewBtn" >View All</a>
+									<div class="col-md-6">
+										<a href="#" th:href="@{/enotes}" class="btn btn-info panelNewBtn" >View All</a>
+									</div>
+									<div class="col-md-6">
+										<a href="#" th:href="@{/enote}" class="btn btn-info panelNewBtnR" >Compose New</a>
+									</div>
 								</div>
     						</div>
     					</div>
@@ -123,12 +128,12 @@
     			<div class="row">
     				<div class="col-md-12">
     					<div class="panel panel-info">
-    						<div class="panel-heading">Requests</div>
+    						<div class="panel-heading">Time-Off</div>
     						<div class="panel-body panel-12-emp">
     							<div class="row">
 									<table class="table table-hover table-bordered tb-md">
 										<tr>
-											<th>FROM</th>
+											<th>DATE</th>
 											<th>REASON</th>
 											<th>EMPLOYEE</th>
 										</tr>
@@ -141,7 +146,12 @@
 									</table>
 								</div>
 								<div class="row">
-									<a href="#" th:href="@{/reqs}" class="btn btn-info panelNewBtn" >View All</a>
+									<div class="col-md-6">
+										<a href="#" th:href="@{/reqs}" class="btn btn-info panelNewBtn" >View All</a>
+									</div>
+									<div class="col-md-6">
+										<a href="#" th:href="@{/req}" class="btn btn-info panelNewBtnR" >Apply</a>
+									</div>
 								</div>
     						</div>
     					</div>

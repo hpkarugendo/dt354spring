@@ -15,17 +15,12 @@
             <form class="form-horizontal" th:object="${dept}" th:action="@{/department}" method="post">
             <input type="hidden" th:field="*{id}"/>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Department Name:</label>
-                    <div class="col-sm-10">
-                        <input type="text" th:field="*{name}" required="required" class="form-control" />
-                    </div>
+                    <label class="control-label">Department Name:</label>
+                    <input type="text" th:field="*{name}" required="required" class="form-control" />
                 </div>
                 <div class="form-group">
-                	<label class="col-sm-2 control-label"></label>
-                    <div class="col-sm-10">
-                    	<button type="submit" class="btn btn-success">Save</button>
-                    	<button type="reset" class="btn btn-default">Clear</button>
-                    </div>
+                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="reset" class="btn btn-default">Clear</button>
                 </div>
             </form>
     </div>

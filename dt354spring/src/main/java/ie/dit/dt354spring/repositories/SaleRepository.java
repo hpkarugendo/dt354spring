@@ -9,8 +9,8 @@ import ie.dit.dt354spring.entities.Sale;
 
 @Repository
 public interface SaleRepository extends CrudRepository<Sale, Integer>{
-	List<Sale> findTop10ByOrderBySalesInPriceDesc();
-	List<Sale> findTop10ByOrderBySalesInQuantityDesc();
+	List<Sale> findTop5ByOrderBySalesInPriceDesc();
+	List<Sale> findTop5ByOrderBySalesInQuantityDesc();
 	List<Sale> findAllByOrderBySalesInQuantityDesc();
 	List<Sale> findAllByOrderBySalesInPriceDesc();
 	List<Sale> findAllByOrderByNameAsc();
