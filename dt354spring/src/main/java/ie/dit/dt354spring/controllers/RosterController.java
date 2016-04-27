@@ -68,9 +68,9 @@ public class RosterController {
 		    String ext = "";
 		    if(file.getContentType().contains("pdf")){
 			ext = ".pdf";
-		    } else if(file.getContentType().contains("xls")){
+		    } else if(file.getContentType().contains("excel")){
 			ext = ".xls";
-		    } else if(file.getContentType().contains("xlsx")) {
+		    } else if(file.getContentType().contains("sheet")) {
 			ext = ".xlsx";
 		    }
 		    FileOutputStream fos = new FileOutputStream("src/main/resources/static/rosters/" + 
