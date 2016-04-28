@@ -62,7 +62,9 @@ public class RosterController {
 		Department dt = dRepo.findOne(dept);
 		SimpleDateFormat f = new SimpleDateFormat("yyyyMMdd");
 		r.setDept(dt);
-		r.setRosterDate(rosterDate);
+		String dString;
+		dString = rosterDate.replace("-", "");
+		r.setRosterDate(dString);
 		try {
 		    byte[] b = file.getBytes();
 		    String ext = "";
