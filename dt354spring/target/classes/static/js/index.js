@@ -47,7 +47,7 @@ function charts(data, ChartType) {
 	}
 }
 
-/*function hide(obj) {
+function hide(obj) {
 	jQuery.ajax({
 		type : "GET",
 		url : "http://localhost:8080/rest/sales-by-price",
@@ -61,4 +61,4 @@ function charts(data, ChartType) {
 			alert("Status: " + status + "\nError:" + jqXHR);
 		}
 	});
-}*/
+}
